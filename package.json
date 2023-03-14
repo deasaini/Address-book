@@ -1,0 +1,30 @@
+{
+  "name": "addressbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deasaini/Address-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deasaini/Address-book/issues"
+  },
+  "homepage": "https://github.com/deasaini/Address-book#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0",
+    "pg": "^8.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
