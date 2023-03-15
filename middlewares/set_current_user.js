@@ -7,7 +7,7 @@ function setCurrentUser(req, res, next) {
 
   if (userId) {
     // user is logged in - setup currentUser object
-    const sql = `SELECT id, email FROM users WHERE id = ${userId}`
+    const sql = `SELECT userid, username FROM users WHERE userid = ${userId}`
 
     db.query(sql, (err, dbRes) => {
       if (err) {

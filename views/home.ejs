@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="#C1E1C1";style="font-family:cursive;">
+   
+   <h1 style="font-family:cursive; font-size: 50px;">Address Book</h1> 
+   <h2 style="font-family:cursive;"><a href="/addcontact/<%= allContacts.userid %>">Add contact details</a></h2>
+   
+   <% if(allContacts.length === 0){ %>
+     <h2> You do not have any contacts. Please click the link above to add contacts to your address book.</h2> 
+
+   <% } else{ %>
+
+   <% for (let contact of allContacts) { %>
+   <h2 style="font-family:cursive";><%= contact.name %></h2>
+   <h2 style="font-family:cursive";><%= contact.phone %></h2>
+   <h2 style="font-family:cursive";><%= contact.address %></h2>
+   <h2 style="font-family:cursive";><%= contact.email %></h2>
+   
+   <a href="/edit_contact/<%= contact.id %>">edit</a>
+   <br/>
+   <form action="/contacts/<%= contact.id %>" method="post">
+    <input type= "hidden" name="_method" value="delete" />
+    <input type="hidden" name="id" value="<%= contact.id %>" />
+    <button>delete</button>
+</form>
+   <br/><br/><br/>
+   
+    <% } %>
+ <% } %>
+    
+</body>
+</html>

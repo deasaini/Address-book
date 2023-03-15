@@ -7,19 +7,20 @@ router.get("/login", (req, res) => {
   res.render("login")
 })
 
+
 router.post("/sessions", (req, res) => {
   const { username, password } = req.body
   console.log(req.body)
   // do you even existing the users table
   const sql = `SELECT * FROM users WHERE username = $1;`
   console.log(sql)
-  db.query(sql, [req.body.username], (err, dbRes) => {
+  db.query(sql, [username], (err, dbRes) => {
     // did we get a record back?
     if(err){
       console.log(err)
     }
     console.log(dbRes.rows)
-    if (dbRes.rows.length == 0) {
+    if (dbRes.rows.length === 0) {
       // no good, user doesn't exist in the users table, stay at the login page
       res.render("login")
       return
@@ -30,8 +31,10 @@ router.post("/sessions", (req, res) => {
     bcrypt.compare(password, user.digested_password, (err, result) => {
       if (result) {
         console.log("Password matched!")
-        req.session.userId = user.id
-        res.redirect("/welcome")
+        console.log(`UserID for redirecting is ${user.userid}`)
+        req.session.userId = user.userid
+        res.redirect(`/welcome/${user.userid}`)
+        console.log("redirected to welcome page")
       } 
       else {
         res.render("login")
@@ -39,6 +42,7 @@ router.post("/sessions", (req, res) => {
     })
   })
 })
+
 
 router.delete("/sessions", (req, res) => {
   req.session.destroy(() => {

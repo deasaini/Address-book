@@ -32,7 +32,7 @@ router.post("/users", (req, res) => {
           console.log(err)
           res.render("signup")
         } else {
-          req.session.userId = dbRes.rows[0].id
+          req.session.userId = dbRes.rows[0].userid
           res.redirect("/login")
         }
       })

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contact details</h1>
+
+<h2><%= contact.id %></h2>
+<h2><%= contact.name %></h2>
+<h2><%= contact.phone %></h2>
+<h2><%= contact.address %></h2>
+<h2><%= contact.email %></h2>
+
+
+<form action="/contacts/<%= contact.id %>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <button>Delete contact</button>
+</form>
+
+<a href="/contacts/<%= contact.id %>/edit">edit</a>
+</body>
+</html>
