@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+.pagewrapper{
+text-align: center;
+border: black;
+backdrop-filter: blur(10px);
+
+}
+
+body{
+margin-top: 90px;
+background-image: url(https://m.media-amazon.com/images/I/61ZUQ8nyiEL.jpg);
+height: 100%;
+font-family:cursive;
+}
+
+h1{
+font-size: 50px;
+font-style: italic;
+font-weight:bolder;
+
+}
+h2{
+    font-size: 30px;
+}

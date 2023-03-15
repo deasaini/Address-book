@@ -9,7 +9,7 @@ CREATE TABLE addressBook (
     userid INTEGER
 );
 
-CREATE TABLE user (
+CREATE TABLE users (
     userid SERIAL PRIMARY KEY,
     name TEXT,
     username TEXT,

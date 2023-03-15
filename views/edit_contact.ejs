@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit contact details</h1>
+
+    <h2><%= contactInfo.userid %></h2>
+      <form action="/editdetails/<%= contactInfo.id %>" method="post">
+          <label for="">Name</label>
+          <input type= "text" name="name" value="<%= contactInfo.name %>"/>
+          <label for="">phone</label>
+          <input type="text" name="phone" value="<%= contactInfo.phone %>"/>
+          <label for="">address</label>
+          <input type="text" name="address" value="<%= contactInfo.address %>"/>
+          <label for="">email</label>
+          <input type="text" name="email" value="<%= contactInfo.email %>"/>  
+          <button>Update contact</button>
+      
+      </form>
+</body>
+</html>
