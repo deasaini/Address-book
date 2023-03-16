@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <h1>Edit contact details</h1>
 
-    <h2><%= contactInfo.userid %></h2>
       <form action="/editdetails/<%= contactInfo.id %>" method="post">
+        <input type="hidden" name="_method" value="put">
           <label for="">Name</label>
           <input type= "text" name="name" value="<%= contactInfo.name %>"/>
           <label for="">phone</label>

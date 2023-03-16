@@ -6,22 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Add contact details</h1>
+<body bgcolor="#C1E1C1";style="font-family:cursive;">
+    <div class="pagewrapper">
+    <h1 style="font-family:cursive; font-size: 50px;">Add contact details</h1>
 
-  <h2><%= userid %></h2>
+
     <form action="/adddetails/<%= userid %>" method="post">
         <label for="">Name</label>
         <input type= "text" name="name"/>
-        <label for="">phone</label>
+        <br/><br/>
+        <label for="">Phone</label>
         <input type="text" name="phone"/>
-        <label for="">address</label>
+        <br/><br/>
+        <label for="">Address</label>
         <input type="text" name="address"/>
-        <label for="">email</label>
+        <br/><br/>
+        <label for="">Email</label>
         <input type="text" name="email"/>  
-        <button>Add </button>
+        <br/><br/>
+        <button>Add Contact</button>
     
     </form>
-        
+</div>      
 </body>
 </html>

@@ -13,7 +13,7 @@ router.get("/welcome/:userid", ensureLoggedIn, (req,res) => {
   console.log(`Query for welcome page is ${sql}`)
   db.query(sql, (err,dbRes) => {
   console.log(err);
-  console.log(`Request is for user id ${req.body.userid}`)
+  console.log(`Request is for user id ${req.params.userid}`)
   const allContacts = dbRes.rows
   allContacts.userid = req.params.userid
   console.log(allContacts);
@@ -54,6 +54,7 @@ router.post("/adddetails/:userid", ensureLoggedIn, (req,res) => {
 // route for display edit page
 
 router.get("/edit_contact/:id", ensureLoggedIn, (req,res) => {
+
   const sql = `SELECT * FROM addressbook where "id" = ${req.params.id};`
  console.log(sql);
 db.query(sql, (err,dbRes) => {
@@ -61,7 +62,6 @@ db.query(sql, (err,dbRes) => {
     console.log(dbRes)
     const contactInfo = dbRes.rows[0]
     res.render("edit_contact", { contactInfo: contactInfo })
-
  })
 })
 
@@ -70,13 +70,13 @@ db.query(sql, (err,dbRes) => {
 
 // route for updating an existing contact
 
-router.post("/editdetails/:id", (req,res) => {
+router.put("/editdetails/:id", (req,res) => {
 console.log(`id is ${req.params.id}`)
 
-const sql = `UPDATE addressbook SET "name" = $1, "phone" = $2, "address" = $3, "email" = $4 WHERE "id" = ${req.params.id};`
+const sql = `UPDATE addressbook SET name = $1, "phone" = $2, "address" = $3, "email" = $4 WHERE "id" = ${req.params.id};`
 console.log("SQL query is: " + sql)
 
-db.query(sql, [req.params.name, req.params.phone, req.params.address, req.params.email], (err, dbRes) => {
+db.query(sql, [req.body.name, req.body.phone, req.body.address, req.body.email], (err, dbRes) => {
   if(err){
     console.log("Error on update query")
     console.log(err)
@@ -85,16 +85,16 @@ db.query(sql, [req.params.name, req.params.phone, req.params.address, req.params
 
   const getUserId = `SELECT userid FROM addressbook WHERE "id" = ${req.params.id};`
 
-  db.query(getUserId, (err, res) => {
+  db.query(getUserId, (err, dbRes) => {
   console.log("Inside getUserID query")
     if(err){  
     console.log(err)
   }
-  console.log(res.rows)
-  const userid = res.rows[0].userid
+  console.log(dbRes.rows)
+  const userid = dbRes.rows[0].userid
   console.log("User Id is " + userid)
   //res.redirect(`/welcome/${req.params.userid}`)
-  res.redirect(`/welcome/${res.rows[0].userid}`)  //Problem here//
+  res.redirect(`/welcome/${dbRes.rows[0].userid}`)
 
 })
 
@@ -102,13 +102,30 @@ db.query(sql, [req.params.name, req.params.phone, req.params.address, req.params
 
 
 router.delete("/contacts/:id", (req, res) => {
-  const sql = `DELETE FROM addressbook WHERE id = $1;`
+  const getUserId = `SELECT userid FROM addressbook WHERE "id" = ${req.params.id};`
 
+  db.query(getUserId, (err, dbRes) => {
+  console.log("Inside getUserID query")
+    if(err){  
+    console.log(err)
+  }
+  console.log(dbRes.rows)
+  const userid = dbRes.rows[0].userid
+  console.log("User Id is " + userid)
+  
+  
+  const sql = `DELETE FROM addressbook WHERE id = $1;`
   db.query(sql, [req.params.id], (err, dbRes) => {
-    res.redirect("/")
-    //res.redirect(`/welcome/${req.params.userid}`)
+    if(err){
+      console.log(err);
+    }
   })
 
+  console.log("after deletion, User Id is " + userid)
+  //res.redirect(`/welcome/${req.params.userid}`)
+  res.redirect(`/welcome/${dbRes.rows[0].userid}`) 
+
+})
   
 })
 
