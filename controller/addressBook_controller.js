@@ -130,6 +130,4 @@ router.delete("/contacts/:id", (req, res) => {
 })
 
 
-
-
 module.exports = router

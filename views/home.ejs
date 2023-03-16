@@ -8,7 +8,20 @@
 </head>
 <body bgcolor="#C1E1C1";style="font-family:cursive;">
    
-   <h1 style="font-family:cursive; font-size: 50px; text-align: center; textun;">Address Book</h1> 
+   <h1 style="font-family:cursive; font-size: 50px; text-align: center;">Address Book</h1> 
+
+
+<div style="text-align: right; font-size: 50px;">
+
+<form action="/sessions" method="post">
+    <input type= "hidden" name="_method" value="delete" />
+    <button>Logout</button>  
+</form>
+  </div>
+
+
+
+
    <h2 style="font-family:cursive;"><a href="/addcontact/<%= allContacts.userid %>">Add contact details</a></h2>
    
    <% if(allContacts.length === 0){ %>
