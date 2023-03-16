@@ -18,3 +18,13 @@ The app allows user to:
 (3) Edit an existing contact
 
 (4) Delete an existing contact
+
+Technologies Used
+
+- Javascript
+
+- Node JS & Express JS
+
+- PostgreSQL
+
+- HTML/CSS
