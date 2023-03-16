@@ -1,6 +1,6 @@
 CREATE DATABASE addressBook_app;
 
-CREATE TABLE addressBook (
+CREATE TABLE addressbook (
     id SERIAL PRIMARY KEY,
     name TEXT,
     phone INTEGER,
