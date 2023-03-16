@@ -7,21 +7,22 @@
     <title>Document</title>
     
 </head>
-<body>
-    <h1>Edit contact details</h1>
-
+<body bgcolor="#C1E1C1";style="font-family:cursive;">
+    <h1 style="font-family:cursive; font-size: 50px; text-align: center;">Edit contact details</h1>
+    <footer style="text-align: center; font-size: 30px; font-family:cursive;">
       <form action="/editdetails/<%= contactInfo.id %>" method="post">
         <input type="hidden" name="_method" value="put">
           <label for="">Name</label>
           <input type= "text" name="name" value="<%= contactInfo.name %>"/>
-          <label for="">phone</label>
+          <label for="">Phone</label>
           <input type="text" name="phone" value="<%= contactInfo.phone %>"/>
-          <label for="">address</label>
+          <label for="">Address</label>
           <input type="text" name="address" value="<%= contactInfo.address %>"/>
-          <label for="">email</label>
+          <label for="">Email</label>
           <input type="text" name="email" value="<%= contactInfo.email %>"/>  
           <button>Update contact</button>
       
       </form>
+    </footer>
 </body>
 </html>

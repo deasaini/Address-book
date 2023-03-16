@@ -8,7 +8,7 @@
 </head>
 <body bgcolor="#C1E1C1";style="font-family:cursive;">
    
-   <h1 style="font-family:cursive; font-size: 50px;">Address Book</h1> 
+   <h1 style="font-family:cursive; font-size: 50px; text-align: center; textun;">Address Book</h1> 
    <h2 style="font-family:cursive;"><a href="/addcontact/<%= allContacts.userid %>">Add contact details</a></h2>
    
    <% if(allContacts.length === 0){ %>
@@ -17,10 +17,10 @@
    <% } else{ %>
 
    <% for (let contact of allContacts) { %>
-   <h2 style="font-family:cursive";><%= contact.name %></h2>
-   <h2 style="font-family:cursive";><%= contact.phone %></h2>
-   <h2 style="font-family:cursive";><%= contact.address %></h2>
-   <h2 style="font-family:cursive";><%= contact.email %></h2>
+   <h2 style="font-family:cursive";>Name - <%= contact.name %></h2>
+   <h2 style="font-family:cursive";>Phone number - <%= contact.phone %></h2>
+   <h2 style="font-family:cursive";>Address - <%= contact.address %></h2>
+   <h2 style="font-family:cursive";>Email - <%= contact.email %></h2>
    
    <a href="/edit_contact/<%= contact.id %>">edit</a>
    <br/>

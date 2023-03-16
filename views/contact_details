@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Contact details</h1>
+<body bgcolor="#C1E1C1";style="font-family:cursive;">
+    <h1 style="font-family:cursive; font-size: 50px;">Contact details</h1>
 
 <h2><%= contact.id %></h2>
 <h2><%= contact.name %></h2>
