@@ -5,6 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+   .button{
+    cursor: pointer;
+    font-size: 25px;
+  
+    
+   }
+   body{
+    border: 2px solid rgb(2, 0, 0);
+   }
+   .list{
+   padding-left: 40px;
+   }
+
+
+    </style>
 </head>
 <body bgcolor="#C1E1C1";style="font-family:cursive;">
    
@@ -15,14 +31,11 @@
 
 <form action="/sessions" method="post">
     <input type= "hidden" name="_method" value="delete" />
-    <button>Logout</button>  
+    <button class="button">Logout</button>  
 </form>
   </div>
 
-
-
-
-   <h2 style="font-family:cursive;"><a href="/addcontact/<%= allContacts.userid %>">Add contact details</a></h2>
+   <h2 style="font-family:cursive; margin-bottom: 40px; padding-left: 40px;"><a href="/addcontact/<%= allContacts.userid %>">Add contact details</a></h2>
    
    <% if(allContacts.length === 0){ %>
      <h2> You do not have any contacts. Please click the link above to add contacts to your address book.</h2> 
@@ -30,22 +43,24 @@
    <% } else{ %>
 
    <% for (let contact of allContacts) { %>
+    <div class="list">
    <h2 style="font-family:cursive";>Name - <%= contact.name %></h2>
    <h2 style="font-family:cursive";>Phone number - <%= contact.phone %></h2>
    <h2 style="font-family:cursive";>Address - <%= contact.address %></h2>
    <h2 style="font-family:cursive";>Email - <%= contact.email %></h2>
    
-   <a href="/edit_contact/<%= contact.id %>">edit</a>
-   <br/>
+   <a href="/edit_contact/<%= contact.id %>">Edit</a>
+   <br/><br/>
    <form action="/contacts/<%= contact.id %>" method="post">
     <input type= "hidden" name="_method" value="delete" />
     <input type="hidden" name="id" value="<%= contact.id %>" />
     <button>delete</button>
 </form>
+</div>  
    <br/><br/><br/>
    
     <% } %>
  <% } %>
-    
+
 </body>
 </html>
